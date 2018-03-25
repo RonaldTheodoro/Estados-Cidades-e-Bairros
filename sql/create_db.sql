@@ -1,0 +1,19 @@
+CREATE TABLE estados(
+    id_estado INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    uf VARCHAR(2) NOT NULL UNIQUE,
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE cidades(
+    id_cidade INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(150) NOT NULL,
+    estado INTEGER NOT NULL,
+    FOREIGN KEY(estado) REFERENCES estados(id_estado)
+);
+
+CREATE TABLE bairros(
+    id_bairro INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(200) NOT NULL,
+    cidade INTEGER NOT NULL,
+    FOREIGN KEY(cidade) REFERENCES cidades(id_cidade)
+);
